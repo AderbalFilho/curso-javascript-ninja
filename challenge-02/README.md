@@ -76,13 +76,15 @@ Crie uma função com as seguintes características:
 6. E ainda, se nenhuma das condições acima forem atendidas, retorne `null`.
 */
 function logicTest(x, y, z) {
-  if ((x && !y && !z) || (!x && y && !z) || (!x && !y && z)) {
-    return x || y || z;
-  } else if ((x && y && !z) || (x && !y && z) || (!x && y && z)) {
-    return (x || y) + (z || y);
-  } else if (x && y && z) {
-    return (x + y) / z;
-  } else if (!x && !y && !z) {
+  if (x !== undefined) {
+    if ( y !== undefined) {
+      if ( z !== undefined) {
+        return (x + y) / z;
+      }
+      return x + y;
+    }
+    return x;
+  } else if (x === undefined) {
     return false;
   }
 
@@ -93,16 +95,8 @@ function logicTest(x, y, z) {
 ?
 logicTest(1);
 // 1
-logicTest(null, 2);
-// 2
-logicTest(null, null, 3);
-// 3
 logicTest(1, 2);
 // 3
-logicTest(1, null, 3);
-// 4
-logicTest(null, 2, 3);
-// 5
 logicTest(1, 2, 3);
 // 1
 logicTest();
